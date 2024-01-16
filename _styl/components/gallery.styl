@@ -1,0 +1,175 @@
+/*--------------------------------------------------------------------
+* $GALLERY
+--------------------------------------------------------------------*/
+
+.gallery
+  padding: 10px
+  position: fixed
+  right: 0
+  overflow-y: scroll
+  -webkit-overflow-scrolling: touch
+  background: white
+  text-align: center
+  z-index: 2
+
+  height: 100vh
+  width: 'calc(100vw - %s)' % $feature-w
+  top: 0
+  @supports ( (--a: 0))
+    height: calc(100vh - var(--img-h))
+    width: 100vw
+    top: var(--img-h)
+
+  @media screen and (min-width: $mobile + 1) and (max-height: $tall)
+    height: 100vh
+    top: 0
+    @supports ( (--a: 0))
+      width: calc(100vw - var(--feature-w))
+
+  @supports (display: grid)
+    display: grid
+
+    @media screen and (min-width: $wide + 1)
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr))
+    @media screen and (min-width: $mobile + 1) and (max-width: $wide)
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr))
+    @media screen and (max-width: $mobile)
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr))
+    @media screen and (max-width: $mobile) and (max-height: $med)
+       grid-template-columns: repeat(auto-fit, minmax(90px, 1fr))
+
+  .gallery-shirt
+    padding: 5px
+
+    width: 100%
+    max-width: 250px
+    float: left
+    @supports (display: grid)
+      width: auto
+      max-width: auto
+      float: none
+
+    &:last-child
+      margin-bottom: 100px
+
+  img
+    width: 100%
+
+  figcaption
+    font-weight: $font-weight-bold
+
+    @media screen and (min-width: $mobile + 1)
+      margin-top: -15px
+      font-size: 65%
+
+    @media screen and (max-width: $mobile)
+      margin-top: -10px
+      font-size: 55%
+
+  a
+    padding-bottom: 3px
+    text-decoration: none
+    color: $black
+    display: block
+    border-radius: 3px
+
+    &:focus
+      background-color: $grey-lightest
+      outline: none
+
+  @media(hover: hover) and (pointer: fine)
+    a:hover
+      background-color: $grey-lightest
+
+  #gallery-filters
+    display: none
+
+  .print
+    img {
+      border-radius: 4px
+    }
+    @media(hover: hover) and (pointer: fine)
+      a:hover
+        background-color: transparent
+        box-shadow: 0 0 0 2px $gold
+
+  .coffee
+    grid-column: 1/-1
+    margin: 30px 0
+    padding-top: 30px
+    text-align: center
+    font-size: 78%
+    border-top: 1px solid #ccc
+    
+    span, a
+      display: inline-block
+      padding: 5px 0
+
+    a
+      padding-left: 25px
+      background: no-repeat url('/assets/images/coffee.svg') 5px center
+      background-size: auto 20px
+
+      &:focus
+        background-color: $grey-lightest
+      &:hover
+        text-decoration: underline
+
+body.js-ready
+
+  .gallery
+    padding-top: 40px
+
+  .gallery-shirt
+    display: none
+    
+    &.show
+      display: block
+
+  #gallery-filters
+    display: flex
+    position: fixed
+    top: 0
+    right: 0
+    background-color: white
+    border-bottom: 2px solid $black
+    font-size: 80%
+
+    width: 'calc(100vw - %s)' % $feature-w
+    margin-top: auto
+    @supports ( (--a: 0))
+      width: var(--feature-w)
+      margin-top: var(--img-h)
+
+    @media screen and (min-width: $mobile + 1) and (max-height: $tall)
+      margin-top: auto
+      @supports ( (--a: 0))
+        width: calc(100vw - var(--feature-w))
+
+  .filter
+    margin: 5px
+    padding: 4px 8px
+    flex: 1
+    background-color: $black
+    border: none
+    font-size: 90%
+    text-align: left
+    color: white
+    cursor: pointer
+
+    &:focus
+      box-shadow: inset 0 0 0 3px $gold
+      outline: none
+
+    &:not(:last-child)
+      margin-right: 0
+
+    &:not(.active):hover
+      opacity: .8
+
+    &.active
+      padding-left: 25px
+      background-color: $gold
+      background: $gold url('/assets/images/icon-check.svg') no-repeat 8px center
+      background-size: 12px auto
+      color: $black

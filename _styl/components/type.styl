@@ -1,0 +1,52 @@
+/*--------------------------------------------------------------------
+* $TYPE
+--------------------------------------------------------------------*/
+
+h1, h2, p, ul
+  margin-bottom: 1.5em
+
+h1, h2
+  line-height: 1.3
+  color: $black
+
+  a
+    border-bottom: 1px dotted
+    
+    &:hover
+      background-color: $black
+      color: white
+      border: none
+
+h1
+  font-size: 1.2em
+  font-weight: $font-weight-semibold
+
+  @media screen and (max-width: $mobile)
+    font-size: 90%
+
+    @media screen and (max-height: $short)
+      font-size: 80%
+
+h2
+  font-size: .7em
+  font-weight: $font-weight-regular
+
+  @media screen and (max-width: $mobile)
+    font-size: 70%
+
+    @media screen and (max-height: $short)
+      font-size: 60%
+
+em
+  font-style: italic
+
+strong
+  font-weight: $font-weight-semibold
+
+small
+  font-size: 80%
+
+a
+  font-weight: inherit
+  color: inherit
+  text-decoration: none

@@ -1,0 +1,68 @@
+/*--------------------------------------------------------------------
+* $VARIABLES
+--------------------------------------------------------------------*/
+
+// Font Families
+$font-family-georgia = Georgia, Times, serif
+$font-family-helvetica = Helvetica, Arial, sans-serif
+
+// Font Weights
+$font-weight-light = 300
+$font-weight-regular = 400
+$font-weight-medium = 500
+$font-weight-semibold = 600
+$font-weight-bold = 700
+
+// Mixins
+
+b(val) //b for bracket
+  unquote("[") + val + unquote("]")
+
+// Colors
+
+white(alpha)
+  rgba(255,255,255,alpha)
+
+black(alpha)
+  rgba(0,0,0,alpha)
+
+$gold = #FFC802
+$black = #262521
+
+$grey-drk = #444
+$grey-med = #888
+$grey-light = #ccc
+$grey-lightest = #ddd
+
+// Breakpoints
+
+$mobile = 845px
+$wide = 1200px
+$short = 630px
+$med = 800px
+$tall = 1100px
+
+// Variables
+
+:root
+
+  @media screen and (min-width: $mobile + 1) and (max-height: $tall)
+    --feature-w: 500px
+  @media screen and (min-width: $mobile + 1) and (min-height: $tall + 1)
+    --feature-w: 100vw
+  @media screen and (min-width: $mobile + 1)
+    --img-w: 550px
+    --img-h: 670px
+  @media screen and (max-width: $mobile)
+    --feature-w: 100vw
+    --img-w: 410px
+    --img-h: 450px
+  @media screen and (max-width: $mobile) and (max-height: $short)
+    --img-w: 240px
+    --img-h: 280px
+
+// Variable fallbacks
+
+$feature-w = 500px
+$img-w = 550px
+$img-h = 670px

@@ -1,0 +1,130 @@
+/*--------------------------------------------------------------------
+* $FEATURE
+--------------------------------------------------------------------*/
+
+.feature
+  position: absolute
+  left: 0
+  top: 0
+  overflow: hidden
+  z-index: 1
+  background-color: $gold
+  width: $feature-w
+  min-height: $img-h
+  height: $img-h
+
+  @supports ( (--a: 0))
+    width: var(--feature-w)
+    min-height: var(--img-h)
+    height: var(--img-h)
+
+  h1, h2, #share
+    position: fixed
+    z-index: 10
+
+  h1
+    top: 10px
+    left: 10px
+
+  h2
+    left: 10px
+
+    @media screen and (min-width: $mobile + 1)
+      top: 40px
+    @media screen and (max-width: $mobile)
+      top: 30px
+
+  #share
+    padding-right: 20px
+    display: inline-block
+    top: 13px
+    background-image: url('/assets/images/icon-twitter.svg')
+    background-repeat: no-repeat
+    background-position: right center
+    background-size: 16px auto
+    border-bottom: none
+    font-size: 80%
+
+    right: 'calc(100vw - %s + 10px)' % $feature-w
+    @supports ( (--a: 0))
+      right: 10px
+
+    @media screen and (min-width: $mobile + 1) and (max-height: $tall)
+      font-size: 85%
+      @supports ( (--a: 0))
+        left: auto
+        right: calc((100vw - var(--feature-w)) + 10px)
+
+  .david-rose
+    position: fixed
+    z-index: 0
+
+  .david-rose,
+  .shirt
+    width: $feature-w
+    height: $img-h
+
+    @supports ( (--a: 0))
+      width: var(--feature-w)
+    
+    img
+      position: absolute
+      width: auto
+      height: $img-h
+      top: 0
+      left: 50px
+
+      @supports ( (--a: 0))
+        height: var(--img-h)
+        left: 50%
+        transform: translateX(-47%)
+
+      @media screen and (min-width: $mobile + 1) and (max-height: $tall)
+        left: 50px
+        transform: none
+
+  .shirt
+    position: relative
+    z-index: 1
+
+  .prev,
+  .next
+    width: 25px
+    height: @width*2
+    position: absolute
+    z-index: 3
+    text-indent: -9999em
+    background: no-repeat url('/assets/images/arrows.svg')
+    background-size: @height @height
+
+    @media screen and (min-width: $mobile + 1)
+      bottom: 35%
+    @media screen and (max-width: $mobile)
+      bottom: 55%
+    @media screen and (max-width: $mobile) and (max-height: $short)
+      bottom: 70%
+
+    &:focus
+      background-color: black(.2)
+      outline: none
+
+  .prev
+    left: 2%
+    background-position: right center
+  .next
+    right: 2%
+    background-position: left center
+
+  figcaption
+    font-weight: $font-weight-bold
+    position: absolute
+    right: 30px
+
+    @media screen and (min-width: $mobile + 1)
+      font-size: 80%
+      bottom: 10px
+    @media screen and (max-width: $mobile)
+      font-size: 70%
+      bottom: 230px
+    @media screen and (max-width: $mobile) and (max-height: $short)
+      bottom: 395px
